@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e8f5f0">
+<meta name="description" content="Esquema interactivo para completar sobre los seis grupos de animales invertebrados. 3.º de Primaria y apoyos DUA.">
+<title>Completa el mapa de invertebrados · 3.º de Primaria</title>
+<style>
+:root{--ink:#243345;--muted:#536474;--paper:#f7fafb;--purple:#7654b8;--focus:#e57800;--mint:#dff6eb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);font:17px/1.48 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+button,.link{border:2px solid #d8deea;border-radius:12px;padding:10px 14px;background:white;color:var(--ink);font-weight:750;min-height:45px}
+button:hover,.link:hover{background:#eff2fa;border-color:#9a8dd2}.primary{background:#584398;color:white;border-color:#584398}.primary:hover{background:#423376;color:white}
+a{color:#4a318d}header{background:white;border-bottom:1px solid #d7e2e8;padding:12px max(16px,calc((100vw - 1320px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+nav{display:flex;gap:12px;flex-wrap:wrap}nav a{text-decoration:none;font-weight:750;padding:10px;border-radius:10px}
+main{max-width:1320px;margin:auto;padding:18px 16px 70px}.hero{border-radius:26px;background:linear-gradient(110deg,#e6ddfa,#fce3ee 55%,#daf8ef);padding:22px 25px;text-align:center}
+.hero h1{font-size:clamp(26px,4.5vw,43px);line-height:1.14;margin:8px 0}.hero p{margin:7px 0}.tag{display:inline-block;border-radius:100px;padding:5px 12px;background:white;font-weight:800;font-size:14px}
+.mapcenter{display:flex;align-items:center;justify-content:center;margin:16px auto 5px;position:relative}.mapcenter span{display:inline-block;padding:15px 30px;background:#fff;border:3px solid #7866b2;border-radius:20px;box-shadow:0 5px 20px #4a32831c;font-weight:900;font-size:clamp(18px,3vw,26px);text-align:center}
+.mapstem{height:18px;width:5px;background:#7866b2;margin:auto}.intro{max-width:760px;margin:8px auto 18px;text-align:center;color:#445466;font-size:15px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;background:#fff;border:1px solid #dfebed;padding:16px;border-radius:20px;margin:15px 0}
+.control{display:grid;gap:4px;min-width:185px;flex:1}.control label{font-weight:800;font-size:14px}.control select{border:2px solid #aebfc8;border-radius:12px;background:white;color:#263849;padding:10px;min-height:46px;width:100%}
+.checkline{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:650}.checkline input{width:21px;height:21px;accent-color:#584398}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.toolbar button{flex:1;white-space:normal}.progresswrap{background:white;border:1px solid #dce7e9;border-radius:16px;padding:13px 16px;display:grid;gap:6px}
+.progressbar{height:13px;background:#e7eaf1;border-radius:40px;overflow:hidden}.progressbar div{height:100%;width:0;background:#3f9676;transition:width .25s}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:24px;align-items:start}
+.group{--color:#9674c7;--light:#f2e9ff;background:#fff;border:2px solid var(--color);border-radius:23px;overflow:hidden;position:relative;box-shadow:0 6px 20px #2036450d}
+.group:before{content:"";position:absolute;top:-15px;left:50%;width:3px;height:15px;background:var(--color)}
+.grouphead{padding:14px 16px;background:var(--light);display:flex;gap:13px;align-items:center;border-bottom:2px solid var(--color)}
+.em{font-size:49px;line-height:1.2}.grouphead h2{font-size:22px;margin:0;line-height:1.1}.grouphead small{display:block;color:#465768;font-size:13px;font-weight:700;margin-top:4px}
+.speak{margin-left:auto;min-width:44px;padding:6px 9px;font-size:23px;background:white;flex-shrink:0}
+.fields{padding:13px;display:grid;gap:10px}.field{background:#fafcfd;border:1px solid #dce5eb;border-radius:13px;padding:10px}
+.question{display:flex;gap:8px;align-items:center;font-size:15px;font-weight:850;margin-bottom:6px}.question .sym{font-size:22px}.field select,.field input{width:100%;border:2px solid #bac7d1;border-radius:10px;padding:11px;background:white;color:#243345;font-size:16px;min-height:48px}
+.field select:focus,.field input:focus{border-color:#6e52aa}.field .help{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:7px}
+.hintBtn{min-height:34px;border:1px dashed #aaa3c6;border-radius:9px;padding:4px 9px;font-size:13px;color:#534478}
+.hint,.solution{display:none;font-size:13px;margin-top:7px;padding:8px 9px;border-radius:8px;background:#f1ebff;color:#39286c}.hint.visible,.solution.visible{display:block}
+.bank{display:flex;gap:5px;flex-wrap:wrap;margin:6px 0}.bank button{font-size:12px;min-height:30px;padding:3px 7px;border-radius:99px;background:#f5f1fc}
+.feedback{font-size:13px;font-weight:850;min-height:18px;margin-top:5px}.field.ok{border:2px solid #2e8a6e;background:#f0fff7}.field.try{border:2px solid #d58b48;background:#fff9f0}
+.status{background:#e5f4ee;padding:12px 15px;border-radius:12px;font-weight:750;margin-top:12px;min-height:46px}
+.info{max-width:850px;margin:22px auto 0;text-align:center;font-size:14px;color:var(--muted)}
+footer{text-align:center;padding:14px;background:#eef4f5;color:#586978;font-size:13px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.hero{padding:19px 12px}.controls{padding:12px}.toolbar button{flex-basis:40%}.grouphead h2{font-size:20px}main{padding:14px 12px 44px}}
+@media print{@page{size:A4 portrait;margin:9mm}body{background:white;font-size:11px}header,.controls,.toolbar,.progresswrap,.speak,.hintBtn,.hint,.bank,.status,.intro,.info,footer{display:none!important}main{padding:0}.hero{padding:7px;background:white}.hero h1{font-size:19px;margin:1px}.hero p{display:none}.tag{font-size:10px}.mapcenter{margin:4px}.mapcenter span{font-size:13px;padding:5px;border-width:1px}.mapstem{height:8px;width:2px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:8px}.group{box-shadow:none;break-inside:avoid;border-width:1px;border-radius:10px}.group:before{display:none}.grouphead{padding:6px}.em{font-size:25px}.grouphead h2{font-size:14px}.grouphead small{display:none}.fields{padding:6px;gap:5px}.field{padding:5px;border-radius:5px}.question{font-size:10px;margin:0 0 3px}.question .sym{font-size:13px}.field input,.field select{display:none!important}.field .help,.feedback{display:none!important}.printanswer{display:block!important;font-size:11px;min-height:18px;border-bottom:1px dotted #555;padding-left:5px}.solution{display:none!important}}
+</style>
+</head>
+<body>
+<header><strong>🌈 Aula de Aventuras · 3.º de Primaria</strong><nav><a href="./index.html">🏠 Inicio</a><a href="./fichas-adaptadas.html#invertebrados-3">📄 Fichas adaptadas</a></nav></header>
+<main>
+<section class="hero" aria-label="Título del esquema">
+<span class="tag">CONOCIMIENTO DEL MEDIO · 3.º DE PRIMARIA</span>
+<h1>🧩 Completa el mapa de los invertebrados</h1>
+<p>Observa, piensa y rellena las casillas. ¡Puedes hacerlo a tu ritmo!</p>
+</section>
+<div class="mapcenter"><span>🐙 ANIMALES INVERTEBRADOS<br><small style="font-size:0.65em;font-weight:600">NO tienen columna vertebral</small></span></div><div class="mapstem" aria-hidden="true"></div>
+<p class="intro">El mapa se divide en seis grupos. Cada color y dibujo identifica un grupo. Completa dónde viven, cómo respiran, cómo es su cuerpo, ejemplos y una pista para recordarlos.</p>
+<div class="controls" aria-label="Personaliza la actividad">
+ <div class="control"><label for="mode">✍️ ¿Cómo quieres responder?</label><select id="mode"><option value="guided">Con ayuda: elijo palabras</option><option value="write">Sin ayuda: escribo</option></select></div>
+ <div class="control"><label for="groupFilter">🗂️ ¿Qué grupo trabajamos?</label><select id="groupFilter"><option value="all">Los seis grupos</option></select></div>
+ <label class="checkline"><input type="checkbox" id="showBank"> 🧠 Mostrar banco de palabras</label>
+</div>
+<section class="progresswrap" aria-label="Progreso"><strong id="progressText">0 de 30 casillas completadas</strong><div class="progressbar"><div id="progressFill"></div></div><span id="correctText" style="color:#526375;font-size:13px">Puedes completar el mapa en varias sesiones: tus respuestas se guardan en este navegador.</span></section>
+<div class="toolbar"><button class="primary" id="checkAll">✅ Comprobar respuestas</button><button id="reveal">👀 Ver soluciones</button><button id="print">🖨️ Imprimir / Guardar PDF</button><button id="reset">↺ Borrar y empezar</button></div>
+<div class="grid" id="grid" aria-label="Mapa de los seis grupos"></div>
+<div class="status" id="live" role="status" aria-live="polite">Elige una palabra en cada casilla. Si lo necesitas, pulsa «Pista».</div>
+<p class="info">Aprendizaje DUA: colores más símbolos, instrucciones breves, audio, elección o escritura, pistas y ausencia de tiempo límite. Para imprimir un esquema vacío, pulsa «Borrar y empezar» y después «Imprimir».</p>
+</main><footer>© 2026 Aula de Aventuras · Material educativo inclusivo · Las respuestas se almacenan solo en el navegador utilizado.</footer>
+<script>
+(function(){
+"use strict";
+const FIELDS=[
+ {k:"hab",icon:"🏠",label:"Hábitat · ¿Dónde viven?",options:["Acuáticos","Mayoría acuáticos","Mayoría terrestres","Acuáticos y terrestres"]},
+ {k:"resp",icon:"💨",label:"Respiración · ¿Cómo respiran?",options:["Branquias","Branquias o tráqueas","Toda la piel","Poros"]},
+ {k:"body",icon:"🔍",label:"Cuerpo · ¿Cómo son?",options:["Cuerpo blando y concha","Placas con púas","Patas articuladas y exoesqueleto","Cuerpo largo y cilíndrico","Cuerpo con muchos poros","Cuerpo gelatinoso con tentáculos"]},
+ {k:"ex",icon:"🐾",label:"Ejemplos · ¿Cuáles conoces?",options:["Caracol y mejillón","Estrella y erizo de mar","Araña y cangrejo","Lombriz y sanguijuela","Esponja","Medusa y coral"]},
+ {k:"key",icon:"💡",label:"Pista clave · ¿Qué recuerdas?",options:["Muchos son comestibles","Se mueven lentamente","Algunos tienen antenas","Se mueven con músculos","Filtran agua para comer","Atrapan presas con tentáculos"]}
+];
+const GROUPS=[
+ {id:"mol",name:"MOLUSCOS",emoji:"🐌",color:"#a35ac9",light:"#f3e8fb",answers:["Mayoría acuáticos","Branquias","Cuerpo blando y concha","Caracol y mejillón","Muchos son comestibles"],hints:["La mayoría vive en el agua, pero también hay caracoles terrestres.","Piensa en cómo respiran los mejillones.","Algunos llevan una casa dura encima.","Uno tiene concha en espiral; el otro vive dentro de dos valvas.","Por ejemplo, las almejas y los mejillones."]},
+ {id:"equi",name:"EQUINODERMOS",emoji:"⭐",color:"#e2a12d",light:"#fff4d4",answers:["Acuáticos","Branquias","Placas con púas","Estrella y erizo de mar","Se mueven lentamente"],hints:["Viven en el mar.","En el material de estudio aparece el mismo tipo que en los moluscos.","Piensa en la piel de los erizos de mar.","Hay un animal con forma de estrella.","No corren ni saltan."]},
+ {id:"art",name:"ARTRÓPODOS",emoji:"🦀",color:"#65aa4d",light:"#e7f6df",answers:["Mayoría terrestres","Branquias o tráqueas","Patas articuladas y exoesqueleto","Araña y cangrejo","Algunos tienen antenas"],hints:["Muchos viven en tierra, aunque también hay cangrejos acuáticos.","Hay dos formas: una en animales acuáticos y otra en muchos terrestres.","Sus patas tienen articulaciones y una cubierta externa dura.","Uno tiene ocho patas; el otro suele tener pinzas.","Piensa en las dos prolongaciones de la cabeza de una hormiga."]},
+ {id:"ane",name:"ANÉLIDOS",emoji:"🪱",color:"#e66e93",light:"#ffedf2",answers:["Acuáticos y terrestres","Toda la piel","Cuerpo largo y cilíndrico","Lombriz y sanguijuela","Se mueven con músculos"],hints:["Hay lombrices de tierra y anélidos acuáticos.","Intercambian gases por la superficie de su cuerpo.","Su cuerpo recuerda a un tubo largo y blando.","Uno ayuda a remover la tierra.","Se desplazan contrayendo su cuerpo."]},
+ {id:"por",name:"PORÍFEROS",emoji:"🧽",color:"#399bd3",light:"#e4f4ff",answers:["Acuáticos","Poros","Cuerpo con muchos poros","Esponja","Filtran agua para comer"],hints:["Viven en el agua, normalmente en el mar.","El agua pasa por pequeños agujeros.","Tienen muchísimos agujeritos.","Piensa en una esponja marina.","Obtienen alimento cuando el agua pasa a través de su cuerpo."]},
+ {id:"cni",name:"CNIDARIOS",emoji:"🪼",color:"#9a6ed4",light:"#f0e8ff",answers:["Acuáticos","Toda la piel","Cuerpo gelatinoso con tentáculos","Medusa y coral","Atrapan presas con tentáculos"],hints:["Viven en el agua.","El intercambio de gases ocurre por la superficie corporal.","Su cuerpo es blando y tiene prolongaciones alrededor de la boca.","Uno flota y el otro forma colonias.","Usan sus tentáculos para atrapar animales pequeños."]}
+];
+const storageKey="aula-aventuras-invertebrados-esquema-v1";
+const byId=function(id){return document.getElementById(id)};
+let answers={};let checked={};let showingSolutions=false;let mode="guided";
+try{answers=JSON.parse(localStorage.getItem(storageKey)||"{}");if(typeof answers!=="object"||!answers)answers={}}catch(e){answers={}}
+function escapeHtml(v){return String(v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
+function normalize(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9ñ ]/g," ").replace(/\s+/g," ").trim()}
+function isCorrect(g,k,v){const ans=g.answers[["hab","resp","body","ex","key"].indexOf(k)];const a=normalize(v),b=normalize(ans);if(!a)return false;if(a===b)return true;
+ if(k==="hab"){if(ans==="Acuáticos")return /^(acuaticos|agua|mar|en el agua|solo acuaticos|marinos)$/.test(a);if(ans==="Mayoría acuáticos")return /mayoria.*acuat|principalmente.*agua|sobre todo.*agua/.test(a);if(ans==="Mayoría terrestres")return /mayoria.*terrestre|principalmente.*tierra|sobre todo.*tierra/.test(a);return /agua.*tierra|tierra.*agua|acuatic.*terrestre|terrestre.*acuatic/.test(a)}
+ if(k==="resp"){if(ans==="Branquias")return a.includes("branquia");if(ans==="Branquias o tráqueas")return a.includes("traque")||a.includes("branquia");if(ans==="Toda la piel")return a==="piel"||a.includes("superficie")||a.includes("cuerpo");return a.includes("poro")}
+ if(k==="body"){if(g.id==="mol")return a.includes("bland")||a.includes("concha");if(g.id==="equi")return a.includes("pua")||a.includes("placa");if(g.id==="art")return a.includes("exoesqueleto")||a.includes("articulad");if(g.id==="ane")return a.includes("larg")||a.includes("cilindr")||a.includes("anillo");if(g.id==="por")return a.includes("poro");return a.includes("tentacul")||a.includes("gelatinos")}
+ if(k==="ex"){const valid={mol:["caracol","mejillon","babosa","almeja","pulpo"],equi:["estrella","erizo","ofiura"],art:["arana","cangrejo","ciempi","escorpion"],ane:["lombriz","sanguijuela"],por:["esponja"],cni:["medusa","coral","polipo"]};return valid[g.id].some(function(w){return a.includes(w)})}
+ if(k==="key"){const valid={mol:["comestib","comer","alimento"],equi:["lent","desplaz","mov"],art:["antena"],ane:["muscul","contrac"],por:["filtr"],cni:["presa","tentacul","atrap"]};return valid[g.id].some(function(w){return a.includes(w)})}
+ return false
+}
+function persist(){try{localStorage.setItem(storageKey,JSON.stringify(answers))}catch(e){}}
+function selectedGroups(){const filter=byId("groupFilter").value;return GROUPS.filter(function(g){return filter==="all"||filter===g.id})}
+function render(){
+ const grid=byId("grid");grid.innerHTML="";
+ selectedGroups().forEach(function(g){
+ const card=document.createElement("section");card.className="group";card.style.setProperty("--color",g.color);card.style.setProperty("--light",g.light);card.setAttribute("aria-label","Grupo "+g.name);
+ const head=document.createElement("div");head.className="grouphead";head.innerHTML='<span class="em" aria-hidden="true">'+g.emoji+'</span><div><h2>'+g.name+'</h2><small>Completa 5 ideas importantes</small></div><button type="button" class="speak" title="Escuchar este grupo" aria-label="Escuchar '+g.name+'">🔊</button>';
+ head.querySelector("button").addEventListener("click",function(){speak(g.name+". "+FIELDS.map(function(f,i){return f.label+". "+g.answers[i]}).join(". "))});card.appendChild(head);
+ const box=document.createElement("div");box.className="fields";
+ FIELDS.forEach(function(f,i){
+ const key=g.id+":"+f.k;const value=answers[key]||"";
+ const container=document.createElement("div");container.className="field";container.dataset.key=key;
+ const title=document.createElement("label");title.className="question";title.htmlFor="field-"+key;title.innerHTML='<span class="sym" aria-hidden="true">'+f.icon+'</span><span>'+f.label+'</span>';container.appendChild(title);
+ let control;
+ if(mode==="guided"){
+ control=document.createElement("select");const placeholder=document.createElement("option");placeholder.value="";placeholder.textContent="Elige la respuesta…";control.appendChild(placeholder);
+ f.options.forEach(function(opt){const o=document.createElement("option");o.value=opt;o.textContent=opt;control.appendChild(o)});
+ if(f.options.includes(value))control.value=value;
+ }else{
+ control=document.createElement("input");control.type="text";control.autocomplete="off";control.spellcheck=false;control.placeholder="Escribe una palabra o frase breve";control.value=value;
+ }
+ control.id="field-"+key;control.setAttribute("aria-label",g.name+". "+f.label);container.appendChild(control);
+ const bank=document.createElement("div");bank.className="bank";bank.hidden=!(mode==="write"&&byId("showBank").checked);
+ if(mode==="write"){f.options.forEach(function(opt){const b=document.createElement("button");b.type="button";b.textContent=opt;b.addEventListener("click",function(){control.value=opt;answers[key]=opt;checked[key]=null;persist();updateProgress();paintField(container,g,f,opt);control.focus()});bank.appendChild(b)})}container.appendChild(bank);
+ const help=document.createElement("div");help.className="help";const hintbtn=document.createElement("button");hintbtn.className="hintBtn";hintbtn.type="button";hintbtn.textContent="💡 Pista";hintbtn.setAttribute("aria-expanded","false");
+ const hint=document.createElement("div");hint.className="hint";hint.textContent=g.hints[i];
+ hintbtn.addEventListener("click",function(){hint.classList.toggle("visible");hintbtn.setAttribute("aria-expanded",String(hint.classList.contains("visible")))});
+ help.appendChild(hintbtn);container.appendChild(help);container.appendChild(hint);
+ const solution=document.createElement("div");solution.className="solution";solution.textContent="Respuesta: "+g.answers[i];if(showingSolutions)solution.classList.add("visible");container.appendChild(solution);
+ const feedback=document.createElement("div");feedback.className="feedback";feedback.setAttribute("aria-live","polite");container.appendChild(feedback);
+ const printed=document.createElement("span");printed.className="printanswer";printed.hidden=true;printed.textContent=value||" ";container.appendChild(printed);
+ control.addEventListener(mode==="guided"?"change":"input",function(){answers[key]=control.value;checked[key]=null;persist();updateProgress();paintField(container,g,f,control.value);printed.textContent=control.value||" "});
+ paintField(container,g,f,value);
+ box.appendChild(container);
+ });card.appendChild(box);grid.appendChild(card);
+ });updateProgress();
+}
+function paintField(container,g,f,v){container.classList.remove("ok","try");const feedback=container.querySelector(".feedback");feedback.textContent="";const key=container.dataset.key;
+ if(checked[key]===true){container.classList.add("ok");feedback.textContent="✓ ¡Bien!"}
+ else if(checked[key]===false){container.classList.add("try");feedback.textContent=v?"↻ Revisa y prueba otra vez.":"○ Sin completar"}
+}
+function updateProgress(){let done=0;Object.keys(answers).forEach(function(k){if(String(answers[k]).trim())done++});const n=GROUPS.length*FIELDS.length;byId("progressText").textContent=done+" de "+n+" casillas completadas";byId("progressFill").style.width=Math.min(100,done/n*100)+"%";byId("progressFill").setAttribute("role","progressbar");byId("progressFill").setAttribute("aria-valuenow",done);byId("progressFill").setAttribute("aria-valuemax",n)}
+function check(){let right=0,answered=0;const visible=selectedGroups();visible.forEach(function(g){FIELDS.forEach(function(f){const k=g.id+":"+f.k;const v=answers[k]||"";if(v.trim())answered++;checked[k]=isCorrect(g,f.k,v);if(checked[k])right++})});render();
+ byId("live").textContent="✓ "+right+" de "+(visible.length*5)+" respuestas correctas ("+answered+" casillas respondidas). Las que estén marcadas en naranja se pueden revisar con una pista. ¡Sigue a tu ritmo!";
+ byId("correctText").textContent="Respuestas correctas en este repaso: "+right+" / "+(visible.length*5);
+}
+function speak(msg){if(!("speechSynthesis" in window)){byId("live").textContent="Este navegador no dispone de lectura en voz alta.";return}window.speechSynthesis.cancel();const utter=new SpeechSynthesisUtterance(msg);utter.lang="es-ES";utter.rate=.86;window.speechSynthesis.speak(utter)}
+GROUPS.forEach(function(g){const o=document.createElement("option");o.value=g.id;o.textContent=g.emoji+" "+g.name;byId("groupFilter").appendChild(o)});
+byId("mode").addEventListener("change",function(e){mode=e.target.value;if(mode==="guided"){byId("showBank").checked=false;byId("showBank").disabled=true}else byId("showBank").disabled=false;checked={};render();byId("live").textContent=mode==="guided"?"Selecciona las respuestas del desplegable.":"Escribe palabras clave. Puedes activar el banco de palabras si necesitas ayuda."});
+byId("showBank").disabled=true;
+byId("groupFilter").addEventListener("change",function(){render();byId("live").textContent="Ahora trabajamos: "+(byId("groupFilter").value==="all"?"todos los grupos":selectedGroups()[0].name)+". Puedes cambiar de grupo cuando quieras."});
+byId("showBank").addEventListener("change",render);
+byId("checkAll").addEventListener("click",check);
+byId("reveal").addEventListener("click",function(){showingSolutions=!showingSolutions;byId("reveal").textContent=showingSolutions?"🙈 Ocultar soluciones":"👀 Ver soluciones";render();byId("live").textContent=showingSolutions?"Las soluciones están visibles debajo de las casillas.":"Soluciones ocultas. Continúa completando el esquema."});
+byId("print").addEventListener("click",function(){window.print()});
+byId("reset").addEventListener("click",function(){if(!window.confirm("¿Quieres borrar todas las respuestas guardadas y comenzar de nuevo?"))return;answers={};checked={};showingSolutions=false;byId("reveal").textContent="👀 Ver soluciones";persist();render();byId("live").textContent="El esquema está vacío y listo para empezar."});
+render();
+})();
+</script>
+</body>
+</html>
